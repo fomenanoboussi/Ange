@@ -1301,55 +1301,21 @@ function CardApp() {
                           )}
                         </div>
 
-                        {/* Actions container */}
+                        {/* URL Input */}
                         <div className="flex-1 space-y-1">
-                          {/* File input */}
+                          <span className="text-[10px] font-bold text-neutral-400 block">{"Lien internet (URL) de l'image"}</span>
                           <input
-                            type="file"
-                            accept="image/*"
-                            id={`file-upload-${p.id}`}
-                            className="hidden"
-                            onChange={async (e) => {
-                              const file = e.target.files?.[0];
-                              if (file) {
-                                try {
-                                  const compressedBase64 = await compressImage(file);
-                                  const updated = [...cardData.polaroids];
-                                  updated[index].image = compressedBase64;
-                                  setCardData({ ...cardData, polaroids: updated });
-                                } catch (err) {
-                                  console.error("Image upload/compression error:", err);
-                                }
-                              }
+                            type="text"
+                            value={p.image}
+                            onChange={(e) => {
+                              const updated = [...cardData.polaroids];
+                              updated[index].image = e.target.value || "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop";
+                              setCardData({ ...cardData, polaroids: updated });
                             }}
+                            className="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs focus:outline-none focus:border-rose-300"
+                            placeholder="https://exemple.com/image.jpg"
                           />
-                          <label
-                            htmlFor={`file-upload-${p.id}`}
-                            className="w-full flex items-center justify-center gap-1.5 px-3 py-2 bg-rose-50 hover:bg-rose-100/70 text-rose-600 font-sans font-bold text-[11px] rounded-lg border border-rose-100 cursor-pointer transition-colors select-none text-center"
-                          >
-                            <Upload className="w-3.5 h-3.5" />
-                            Choisir une photo du PC
-                          </label>
                         </div>
-                      </div>
-
-                      {/* URL input fallback */}
-                      <div className="pt-1">
-                        <span className="text-[9px] font-semibold text-neutral-400 block mb-0.5">Ou lien internet (URL) :</span>
-                        <input
-                          type="text"
-                          value={p.image.startsWith("data:") ? "" : p.image}
-                          onChange={(e) => {
-                            const updated = [...cardData.polaroids];
-                            updated[index].image = e.target.value || "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop";
-                            setCardData({ ...cardData, polaroids: updated });
-                          }}
-                          className="w-full px-2 py-1.5 bg-white border border-neutral-200 rounded text-xs focus:outline-none focus:border-rose-300"
-                          placeholder={p.image.startsWith("data:") ? "Photo importée du PC (Base64)" : "https://lien-image.com/photo.jpg"}
-                        />
-                        {p.image.startsWith("data:") && (
-                          <span className="text-[9px] text-emerald-600 font-semibold block mt-1">✓ Photo locale importée !</span>
-                        )}
                       </div>
 
                       {/* Image Caption input */}
