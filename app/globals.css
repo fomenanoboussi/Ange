@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-serif);
+  --font-handwriting: var(--font-handwriting);
+  --font-casual: var(--font-casual);
+  --font-sans: var(--font-sans);
+}
+
+/* Custom background patterns and aesthetics */
+.bg-gingham {
+  background-color: #f8f4ec;
+  background-image: 
+    linear-gradient(90deg, rgba(224, 212, 196, 0.35) 50%, transparent 50%),
+    linear-gradient(rgba(224, 212, 196, 0.35) 50%, transparent 50%);
+  background-size: 44px 44px;
+}
+
+/* Hide scrollbars but preserve scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom soft glow effects without violating anti-slop rules */
+.soft-shadow {
+  box-shadow: 0 4px 20px -2px rgba(139, 115, 85, 0.12), 0 2px 8px -1px rgba(139, 115, 85, 0.08);
+}
+.deep-shadow {
+  box-shadow: 0 20px 40px -10px rgba(90, 70, 50, 0.15), 0 10px 20px -5px rgba(90, 70, 50, 0.1);
+}
+

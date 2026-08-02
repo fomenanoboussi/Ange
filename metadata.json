@@ -1,0 +1,6 @@
+{
+  "name": "Enveloppe Cadeau Interactive",
+  "description": "Une enveloppe interactive romantique et personnalisable avec lettre d'amour, cassette musicale rétro et photos Polaroid.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
