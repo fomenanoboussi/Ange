@@ -454,6 +454,14 @@ function CardApp() {
       });
       const data = await response.json();
       if (data.success) {
+        if (data.cardData) {
+          setCardData(data.cardData);
+          try {
+            localStorage.setItem("valentine_card_draft_v1", JSON.stringify(data.cardData));
+          } catch (e) {
+            console.error("Failed to update localStorage:", e);
+          }
+        }
         setSaveProjectStatus("success");
         setTimeout(() => setSaveProjectStatus("idle"), 4000);
       } else {
