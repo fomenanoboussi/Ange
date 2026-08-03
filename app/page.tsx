@@ -321,8 +321,20 @@ function CardApp() {
         try {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === "object") {
+            const cleanedPolaroids = Array.isArray(parsed.polaroids)
+              ? parsed.polaroids.map((p: any, i: number) => ({
+                  ...p,
+                  image: (p && typeof p.image === "string" && p.image.trim() !== "" && !p.image.includes("WhatsApp")) 
+                    ? p.image 
+                    : `/photos/photo${(i % 4) + 1}.jpeg`
+                }))
+              : DEFAULT_CARD_DATA.polaroids;
             setTimeout(() => {
-              setCardData(parsed);
+              setCardData({
+                ...DEFAULT_CARD_DATA,
+                ...parsed,
+                polaroids: cleanedPolaroids,
+              });
             }, 0);
           }
         } catch (e) {
@@ -680,6 +692,10 @@ function CardApp() {
                             src={cardData.polaroids[0].image}
                             alt="Polaroid Preview"
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.currentTarget as HTMLImageElement;
+                              target.src = "/photos/photo1.jpeg";
+                            }}
                           />
                         ) : (
                           <div className="w-full h-full bg-rose-50 flex items-center justify-center">
@@ -955,6 +971,10 @@ function CardApp() {
                             sizes="260px"
                             referrerPolicy="no-referrer"
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            onError={(e) => {
+                              const target = e.currentTarget as HTMLImageElement;
+                              target.src = `/photos/photo${(idx % 4) + 1}.jpeg`;
+                            }}
                           />
                           
                           {/* Lens / zoom overlay icon on hover */}
@@ -1343,7 +1363,15 @@ function CardApp() {
                         {/* Thumbnail preview */}
                         <div className="relative w-16 h-16 rounded-lg border border-neutral-200 bg-neutral-100 overflow-hidden flex-shrink-0 flex items-center justify-center shadow-inner">
                           {p.image ? (
-                            <img src={p.image} alt="thumbnail" className="w-full h-full object-cover" />
+                            <img
+                              src={p.image}
+                              alt="thumbnail"
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.currentTarget as HTMLImageElement;
+                                target.src = `/photos/photo${(index % 4) + 1}.jpeg`;
+                              }}
+                            />
                           ) : (
                             <ImageIcon className="w-6 h-6 text-neutral-300" />
                           )}
@@ -1577,6 +1605,10 @@ function CardApp() {
                   sizes="320px"
                   referrerPolicy="no-referrer"
                   className="object-cover"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.src = "/photos/photo1.jpeg";
+                  }}
                 />
               </div>
 
