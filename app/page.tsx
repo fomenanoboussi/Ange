@@ -493,7 +493,7 @@ function CardApp() {
 
       {/* Background decoration elements */}
       <div className="absolute top-4 left-4 text-xs text-[#a0896d]/60 select-none hidden md:block z-10">
-        ✨ Fait avec amour pour elle
+        ✨ Fait avec amour pour {cardData.recipient || "Ange"}
       </div>
 
       {/* Main Container - Framed like a cozy iPhone screen on desktop, full-bleed on mobile */}
@@ -527,7 +527,7 @@ function CardApp() {
                     <div className="text-center pt-4">
                       <span className="inline-block text-2xl text-[#8b7355] filter drop-shadow">🎀</span>
                       <h1 className="font-serif text-2xl font-bold text-[#6a5438] mt-1 select-none tracking-wide">
-                        Pour mon amour...
+                        Pour {cardData.recipient || "Ange"}...
                       </h1>
                     </div>
 
@@ -658,7 +658,7 @@ function CardApp() {
 
                       {/* Clickable Action indicator */}
                       <div className="text-[9px] text-rose-500 font-serif font-semibold border-t border-dashed border-[#e8dfd3] pt-1.5 flex items-center justify-between mt-1 select-none">
-                        <span>Cliquez pour lire la lettre 📜</span>
+                        <span>{"Cliquez pour lire 📜"}</span>
                       </div>
                     </motion.div>
 
@@ -696,19 +696,19 @@ function CardApp() {
                       {/* Cute Handwriting caption */}
                       <div className="text-center py-1 select-none">
                         <span className="font-handwriting text-[10px] font-bold text-[#8b7355] leading-none whitespace-nowrap block truncate">
-                          Appuyez ! 📸
+                          Vos Photos ! 📸
                         </span>
                       </div>
                     </motion.div>
 
-                    {/* Outer sticker label pinned across Polaroids just like in the screenshot! */}
+                    {/* Outer sticker label pinned across Polaroids */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
                       animate={{ opacity: 1, scale: 1, rotate: -4 }}
                       transition={{ delay: 0.4 }}
                       className="absolute top-[170px] right-[10px] bg-white border border-[#ebdcc8] px-2 py-1 rounded shadow-md text-[8px] font-extrabold text-[#5c402b] flex items-center gap-1 select-none pointer-events-none whitespace-nowrap z-30"
                     >
-                      Appuyez sur les polaroïds ! 📸
+                      Appuyez pour la galerie ! 📸
                     </motion.div>
 
                     {/* 4. The gorgeous floating Dark Brown Leather Pocket Base */}
@@ -910,12 +910,12 @@ function CardApp() {
               >
                 {/* Polaroid Stack Feed */}
                 <div className="flex-1 overflow-y-auto no-scrollbar space-y-6 py-2 px-1 rounded-2xl">
-                  <div className="text-center mb-4 flex flex-col items-center gap-2">
-                    <span className="text-xs font-serif italic text-neutral-400">(Fais défiler vers le bas pour voir toutes les photos ☕)</span>
+                  <div className="text-center mb-4 flex flex-col items-center gap-1">
+                    <h3 className="font-serif text-base font-bold text-[#5c402b]">Galerie Souvenirs 📸</h3>
+                    <span className="text-xs font-serif italic text-neutral-400">(Fais défiler vers le bas pour voir toutes tes photos ☕)</span>
                   </div>
 
                   {cardData.polaroids.map((p, idx) => {
-                    // Generate subtle, attractive aesthetic angles for Polaroid placement
                     const angles = [-3.5, 2.5, -2, 3];
                     const angle = angles[idx % angles.length];
 
@@ -956,7 +956,7 @@ function CardApp() {
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           
-                          {/* Beautiful lens/zoom overlay icon on hover */}
+                          {/* Lens / zoom overlay icon on hover */}
                           <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <span className="bg-white/95 text-[10px] text-[#503d2b] font-bold tracking-wider px-2 py-1 rounded-full shadow-sm flex items-center gap-1 scale-90 group-hover:scale-100 transition-transform duration-300 uppercase">
                               🔍 Agrandir
@@ -964,7 +964,7 @@ function CardApp() {
                           </div>
                         </div>
 
-                        {/* Caption underneath image - Clean non-editable Text */}
+                        {/* Caption underneath image */}
                         <div className="text-center mt-3 px-1">
                           <p className="font-handwriting text-[#503d2b] text-base py-0.5 leading-snug select-none">
                             {p.caption || "Un souvenir précieux..."}
@@ -1372,7 +1372,7 @@ function CardApp() {
                                 setCardData({ ...cardData, polaroids: updated });
                               }}
                               className="w-full px-2 py-1 bg-white border border-neutral-200 rounded-md text-[11px] focus:outline-none focus:border-rose-300"
-                              placeholder={p.image.startsWith("data:") ? "Photo personnalisée importée ✓" : "https://exemple.com/image.jpg"}
+                              placeholder={p.image.startsWith("data:") ? "Photo personnalisée importée ✓" : "/photos/photo1.jpeg"}
                             />
                           </div>
                         </div>

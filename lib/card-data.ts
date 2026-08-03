@@ -89,35 +89,35 @@ export const SONGS: SongOption[] = [
 ];
 
 export const DEFAULT_CARD_DATA: CardData = {
-  recipient: "Ange",
-  message: "Chère Ange,\n\nJe voulais t'écrire ces quelques mots du plus profond de mon cœur pour te dire à quel point tu comptes énormément pour moi.\n\nTu es mon ange gardien, ma plus douce pensée et mon plus beau sourire de chaque jour. Ta simple présence illumine ma vie et donne une saveur si unique à chaque seconde que nous partageons. Sans toi, mon monde serait infiniment moins doux, moins coloré et tellement moins vivant. Merci d'être cette personne si précieuse, si extraordinaire, et de faire vibrer mon cœur si fort au quotidien.\n\nSache que je serai toujours là pour toi, à chaque pas, à chaque rire et dans chacun de tes rêves. Tu es tout pour moi.\n\nJe t'aime tendrement et pour toujours, de tout mon cœur, 💖",
-  cassetteTitle: "Notre Douce Mélodie ♫",
-  surpriseText: "Surprise ! J'ai une surprise pour toi cette semaine... J'espère de tout cœur qu'elle te plaira ! 🧸❤️",
-  selectedSongId: "perfect",
-  envelopeTheme: "classic",
-  sealEmblem: "heart",
-  polaroids: [
+  "recipient": "Ange",
+  "message": "Chère Ange,\n\nJe voulais t'écrire ces quelques mots du plus profond de mon cœur pour te dire à quel point tu comptes énormément pour moi.\n\nTu es mon ange gardien, ma plus douce pensée et mon plus beau sourire de chaque jour. Ta simple présence illumine ma vie et donne une saveur si unique à chaque seconde que nous partageons. Sans toi, mon monde serait infiniment moins doux, moins coloré et tellement moins vivant. Merci d'être cette personne si précieuse, si extraordinaire, et de faire vibrer mon cœur si fort au quotidien.\n\nSache que je serai toujours là pour toi, à chaque pas, à chaque rire et dans chacun de tes rêves. Tu es tout pour moi.\n\nJe t'aime tendrement et pour toujours, de tout mon cœur, 💖",
+  "cassetteTitle": "Notre Douce Mélodie ♫",
+  "surpriseText": "Surprise ! J'ai une surprise pour toi cette semaine... J'espère de tout cœur qu'elle te plaira ! 🧸❤️",
+  "selectedSongId": "perfect",
+  "envelopeTheme": "classic",
+  "sealEmblem": "heart",
+  "polaroids": [
     {
-      id: "p1",
-      image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop",
-      caption: "Ton doux sourire...",
+      "id": "p1",
+      "image": "/photos/photo1.jpeg",
+      "caption": "Ton doux sourire..."
     },
     {
-      id: "p2",
-      image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=600&auto=format&fit=crop",
-      caption: "...illumine ma vie...",
+      "id": "p2",
+      "image": "/photos/photo2.jpeg",
+      "caption": "...illumine ma vie..."
     },
     {
-      id: "p3",
-      image: "https://images.unsplash.com/photo-1559251606-c623743a6d76?q=80&w=600&auto=format&fit=crop",
-      caption: "...à travers chaque moment...",
+      "id": "p3",
+      "image": "/photos/photo3.jpeg",
+      "caption": "...à travers chaque moment..."
     },
     {
-      id: "p4",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop",
-      caption: "...tu es dans mon cœur.",
-    },
-  ],
+      "id": "p4",
+      "image": "/photos/photo4.jpeg",
+      "caption": "...tu es dans mon cœur."
+    }
+  ]
 };
 
 // UTF-8 and URI-safe Base64 encoder helper
