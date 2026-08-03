@@ -324,8 +324,8 @@ function CardApp() {
             const cleanedPolaroids = Array.isArray(parsed.polaroids)
               ? parsed.polaroids.map((p: any, i: number) => ({
                   ...p,
-                  image: (p && typeof p.image === "string" && p.image.trim() !== "" && !p.image.includes("WhatsApp")) 
-                    ? p.image 
+                  image: (p && typeof p.image === "string" && p.image.trim() !== "") 
+                    ? (p.image.includes(" ") ? p.image.replace(/ /g, "%20") : p.image)
                     : `/photos/photo${(i % 4) + 1}.jpeg`
                 }))
               : DEFAULT_CARD_DATA.polaroids;

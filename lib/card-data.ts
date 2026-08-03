@@ -114,7 +114,7 @@ export const DEFAULT_CARD_DATA: CardData = {
     },
     {
       "id": "p4",
-      "image": "/photos/photo4.jpeg",
+      "image": "/photos/WhatsApp Image 2026-08-02 at 07.52.48.jpeg",
       "caption": "...tu es dans mon cœur."
     }
   ]
@@ -156,7 +156,9 @@ export function decodeCardData(base64Str: string): CardData | null {
           ? parsed.polaroids.map((p: any, i: number) => ({
               ...DEFAULT_CARD_DATA.polaroids[i],
               ...p,
-              image: (p && typeof p.image === "string" && p.image.trim() !== "" && !p.image.includes("WhatsApp")) ? p.image : (DEFAULT_CARD_DATA.polaroids[i]?.image || `/photos/photo${(i % 4) + 1}.jpeg`),
+              image: (p && typeof p.image === "string" && p.image.trim() !== "") 
+                ? (p.image.includes(" ") ? p.image.replace(/ /g, "%20") : p.image) 
+                : (DEFAULT_CARD_DATA.polaroids[i]?.image || `/photos/photo${(i % 4) + 1}.jpeg`),
             }))
           : DEFAULT_CARD_DATA.polaroids,
       };
