@@ -496,17 +496,6 @@ function CardApp() {
         ✨ Fait avec amour pour elle
       </div>
 
-      {/* Floating Customize Button */}
-      <div className="fixed top-4 right-4 z-40 flex items-center gap-2">
-        <button
-          onClick={() => setIsEditorOpen(true)}
-          className="px-4 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-full shadow-xl border border-rose-300/80 flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          <Settings className="w-4 h-4 text-white animate-spin-slow" />
-          <span>Personnaliser ✏️</span>
-        </button>
-      </div>
-
       {/* Main Container - Framed like a cozy iPhone screen on desktop, full-bleed on mobile */}
       <div 
         id="main-applet-container"
@@ -1151,16 +1140,7 @@ function CardApp() {
         </div>
       </div>
 
-      {/* Bottom Action Bar */}
-      <div className="mt-4 flex items-center justify-center gap-3 z-30">
-        <button
-          onClick={() => setIsEditorOpen(true)}
-          className="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-full shadow-lg border border-rose-300 flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          <Settings className="w-4 h-4 text-white" />
-          <span>Personnaliser la carte ✏️</span>
-        </button>
-      </div>
+
 
       {/* 6. CARD CUSTOMIZER SIDEBAR DRAWER (Only shown when editor state active) */}
       <AnimatePresence>
