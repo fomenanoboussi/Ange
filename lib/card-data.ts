@@ -99,22 +99,22 @@ export const DEFAULT_CARD_DATA: CardData = {
   "polaroids": [
     {
       "id": "p1",
-      "image": "/photos/photo1.jpeg",
+      "image": "/photos/WhatsApp Image 2026-08-02 at 08.03.03 (1).jpeg",
       "caption": "Ton doux sourire..."
     },
     {
       "id": "p2",
-      "image": "/photos/photo2.jpeg",
+      "image": "/photos/WhatsApp Image 2026-08-02 at 08.03.03.jpeg",
       "caption": "...illumine ma vie..."
     },
     {
       "id": "p3",
-      "image": "/photos/photo3.jpeg",
+      "image": "/photos/WhatsApp Image 2026-08-02 at 07.52.48.jpeg",
       "caption": "...à travers chaque moment..."
     },
     {
       "id": "p4",
-      "image": "/photos/WhatsApp Image 2026-08-02 at 07.52.48.jpeg",
+      "image": "/photos/WhatsApp Image 2026-08-02 at 07.53.47.jpeg",
       "caption": "...tu es dans mon cœur."
     }
   ]
