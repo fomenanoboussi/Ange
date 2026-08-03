@@ -948,9 +948,10 @@ function CardApp() {
                           className="relative aspect-square w-full bg-neutral-50 overflow-hidden border border-neutral-100 rounded-sm cursor-pointer"
                         >
                           <Image
-                            src={p.image}
-                            alt={p.caption}
+                            src={p.image || `/photos/photo${(idx % 4) + 1}.jpeg`}
+                            alt={p.caption || "Photo souvenir"}
                             fill
+                            unoptimized
                             sizes="260px"
                             referrerPolicy="no-referrer"
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -1569,9 +1570,10 @@ function CardApp() {
               {/* Heavy border around full-view Image */}
               <div className="relative aspect-square w-full bg-neutral-50 overflow-hidden border border-neutral-200 rounded-xs shadow-inner">
                 <Image
-                  src={selectedPolaroid.image}
-                  alt={selectedPolaroid.caption}
+                  src={selectedPolaroid.image || "/photos/photo1.jpeg"}
+                  alt={selectedPolaroid.caption || "Photo souvenir"}
                   fill
+                  unoptimized
                   sizes="320px"
                   referrerPolicy="no-referrer"
                   className="object-cover"
