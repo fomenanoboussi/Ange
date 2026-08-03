@@ -156,6 +156,7 @@ export function decodeCardData(base64Str: string): CardData | null {
           ? parsed.polaroids.map((p: any, i: number) => ({
               ...DEFAULT_CARD_DATA.polaroids[i],
               ...p,
+              image: (p && typeof p.image === "string" && p.image.trim() !== "") ? p.image : DEFAULT_CARD_DATA.polaroids[i]?.image || "",
             }))
           : DEFAULT_CARD_DATA.polaroids,
       };

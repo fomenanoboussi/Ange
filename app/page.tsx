@@ -385,6 +385,51 @@ function CardApp() {
     }
   };
 
+  // Image File Upload Helper
+  const handleImageFileUpload = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = document.createElement("img");
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+        const maxDim = 800;
+
+        if (width > maxDim || height > maxDim) {
+          if (width > height) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
+          const updated = [...cardData.polaroids];
+          updated[index] = {
+            ...updated[index],
+            image: dataUrl,
+          };
+          setCardData({ ...cardData, polaroids: updated });
+        }
+      };
+      if (event.target?.result) {
+        img.src = event.target.result as string;
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   // Share card link generator
   const handleGenerateShareLink = () => {
     const encoded = encodeCardData(cardData);
@@ -1273,40 +1318,53 @@ function CardApp() {
                 {/* Field: Polaroids */}
                 <div className="space-y-4">
                   <span className="text-xs font-bold text-neutral-600 uppercase tracking-wide block border-b pb-1.5">
-                    Photos Polaroid de la Galerie (4 max)
+                    Photos Polaroid de la Galerie ({cardData.polaroids.length} photos)
                   </span>
 
                   {cardData.polaroids.map((p, index) => (
-                    <div key={p.id} className="p-3 border border-neutral-100 rounded-lg bg-[#fafcfd] space-y-3">
+                    <div key={p.id} className="p-3 border border-neutral-100 rounded-xl bg-[#fafcfd] space-y-3 shadow-xs">
                       <div className="flex justify-between items-center">
-                        <span className="text-xs font-bold text-neutral-500">Photo Polaroid #{index + 1}</span>
+                        <span className="text-xs font-bold text-neutral-600">Photo Polaroid #{index + 1}</span>
                       </div>
                       
                       {/* Image Source Selection */}
                       <div className="flex gap-3 items-center">
                         {/* Thumbnail preview */}
-                        <div className="relative w-14 h-14 rounded-lg border border-neutral-200 bg-neutral-50 overflow-hidden flex-shrink-0 flex items-center justify-center">
+                        <div className="relative w-16 h-16 rounded-lg border border-neutral-200 bg-neutral-100 overflow-hidden flex-shrink-0 flex items-center justify-center shadow-inner">
                           {p.image ? (
                             <img src={p.image} alt="thumbnail" className="w-full h-full object-cover" />
                           ) : (
-                            <ImageIcon className="w-5 h-5 text-neutral-300" />
+                            <ImageIcon className="w-6 h-6 text-neutral-300" />
                           )}
                         </div>
 
-                        {/* URL Input */}
-                        <div className="flex-1 space-y-1">
-                          <span className="text-[10px] font-bold text-neutral-400 block">{"Lien internet (URL) de l'image"}</span>
-                          <input
-                            type="text"
-                            value={p.image}
-                            onChange={(e) => {
-                              const updated = [...cardData.polaroids];
-                              updated[index].image = e.target.value || "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop";
-                              setCardData({ ...cardData, polaroids: updated });
-                            }}
-                            className="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs focus:outline-none focus:border-rose-300"
-                            placeholder="https://exemple.com/image.jpg"
-                          />
+                        {/* Upload & URL Controls */}
+                        <div className="flex-1 space-y-2">
+                          <label className="cursor-pointer px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold rounded-lg transition-colors inline-flex items-center gap-1.5 shadow-xs">
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>Changer la photo...</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={(e) => handleImageFileUpload(e, index)}
+                            />
+                          </label>
+
+                          <div className="space-y-0.5">
+                            <span className="text-[10px] font-bold text-neutral-400 block">{"Ou coller un lien d'image (URL) :"}</span>
+                            <input
+                              type="text"
+                              value={p.image.startsWith("data:") ? "" : p.image}
+                              onChange={(e) => {
+                                const updated = [...cardData.polaroids];
+                                updated[index].image = e.target.value;
+                                setCardData({ ...cardData, polaroids: updated });
+                              }}
+                              className="w-full px-2 py-1 bg-white border border-neutral-200 rounded-md text-[11px] focus:outline-none focus:border-rose-300"
+                              placeholder={p.image.startsWith("data:") ? "Photo personnalisée importée ✓" : "https://exemple.com/image.jpg"}
+                            />
+                          </div>
                         </div>
                       </div>
 
