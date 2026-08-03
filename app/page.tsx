@@ -1152,11 +1152,7 @@ function CardApp() {
                       onChange={(e) => setCardData({ ...cardData, envelopeTheme: e.target.value })}
                       className="w-full px-2 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-semibold focus:outline-none focus:border-rose-400"
                     >
-                      <option value="classic">Classique Kraft</option>
-                      <option value="burgundy">Rouge Bordeaux</option>
-                      <option value="emerald">Vert Émeraude</option>
-                      <option value="blush">Rose Poudré</option>
-                      <option value="midnight">Bleu Minuit</option>
+                      <option value="classic">Classique Kraft (Personnalisée)</option>
                     </select>
                   </div>
 
@@ -1170,11 +1166,7 @@ function CardApp() {
                       onChange={(e) => setCardData({ ...cardData, sealEmblem: e.target.value })}
                       className="w-full px-2 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-semibold focus:outline-none focus:border-rose-400"
                     >
-                      <option value="heart">❤️ Cœur</option>
-                      <option value="rose">🌹 Rose</option>
-                      <option value="star">⭐ Étoile</option>
-                      <option value="dove">🕊️ Colombe</option>
-                      <option value="crown">👑 Couronne</option>
+                      <option value="heart">❤️ Cœur (Personnalisé)</option>
                     </select>
                   </div>
                 </div>
@@ -1650,58 +1642,6 @@ const ENVELOPE_THEMES: Record<string, {
     text: "text-[#6a5438]",
     shadow: "shadow-[inset_0_4px_12px_rgba(0,0,0,0.15)]",
   },
-  burgundy: {
-    name: "Velours Royal (Bordeaux)",
-    bg: "bg-gradient-to-b from-[#991b1b] to-[#7f1d1d]",
-    inside: "bg-[#541111]",
-    left: "bg-gradient-to-r from-[#881337] to-[#991b1b]",
-    right: "bg-gradient-to-l from-[#881337] to-[#991b1b]",
-    bottom: "bg-gradient-to-t from-[#4c0519] to-[#881337]",
-    backFlap: "bg-[#721c1c]",
-    border: "border-[#5c0620]/30",
-    goldFoil: "rgba(255, 215, 0, 0.45)",
-    text: "text-rose-950",
-    shadow: "shadow-[inset_0_4px_12px_rgba(0,0,0,0.25)]",
-  },
-  emerald: {
-    name: "Sacre Vert (Émeraude)",
-    bg: "bg-gradient-to-b from-[#0f766e] to-[#065f46]",
-    inside: "bg-[#042f2e]",
-    left: "bg-gradient-to-r from-[#115e59] to-[#065f46]",
-    right: "bg-gradient-to-l from-[#115e59] to-[#065f46]",
-    bottom: "bg-gradient-to-t from-[#022c22] to-[#115e59]",
-    backFlap: "bg-[#0d9488]",
-    border: "border-[#134e4a]/30",
-    goldFoil: "rgba(255, 215, 0, 0.4)",
-    text: "text-teal-950",
-    shadow: "shadow-[inset_0_4px_12px_rgba(0,0,0,0.25)]",
-  },
-  blush: {
-    name: "Rose Caress (Blush)",
-    bg: "bg-gradient-to-b from-[#fda4af] to-[#f43f5e]",
-    inside: "bg-[#9f1239]",
-    left: "bg-gradient-to-r from-[#fb7185] to-[#f43f5e]",
-    right: "bg-gradient-to-l from-[#fb7185] to-[#f43f5e]",
-    bottom: "bg-gradient-to-t from-[#881337] to-[#fb7185]",
-    backFlap: "bg-[#fda4af]",
-    border: "border-[#db2777]/30",
-    goldFoil: "rgba(255, 255, 255, 0.5)",
-    text: "text-rose-950",
-    shadow: "shadow-[inset_0_4px_12px_rgba(0,0,0,0.15)]",
-  },
-  midnight: {
-    name: "Nuit Céleste (Indigo)",
-    bg: "bg-gradient-to-b from-[#312e81] to-[#1e1b4b]",
-    inside: "bg-[#111030]",
-    left: "bg-gradient-to-r from-[#3730a3] to-[#1e1b4b]",
-    right: "bg-gradient-to-l from-[#3730a3] to-[#1e1b4b]",
-    bottom: "bg-gradient-to-t from-[#11103a] to-[#3730a3]",
-    backFlap: "bg-[#312e81]",
-    border: "border-[#1e1b4b]/30",
-    goldFoil: "rgba(125, 211, 252, 0.4)",
-    text: "text-indigo-950",
-    shadow: "shadow-[inset_0_4px_12px_rgba(0,0,0,0.3)]",
-  }
 };
 
 // ==========================================
